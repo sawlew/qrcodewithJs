@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="form">
+      <div class="heading">
+        <h1>QR Code Generator</h1>
+        <p>By</p>
+        <a href="https://www.linkedin.com/in/sawlew/" target="_blank">Soliu Adeosun</a>
+      </div>
+      
+      <form>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          placeholder="Name/Url/Contact/etc"
+          required
+        />
+
+        <div id="qrcode-container">
+          <div id="qrcode" class="qrcode"><a href="img" download="code.PNG"></a></div>
+        </div>
+
+        <button type="button" onclick="generateQRCode()">
+          Generate QR Code
+        </button>
+      </form>
+    </div>
+    <script>
+      function generateQRCode() {
+        let website = document.getElementById("website").value;
+        if (website) {
+          let qrcodeContainer = document.getElementById("qrcode");
+          qrcodeContainer.innerHTML = "";
+          new QRCode(qrcodeContainer, website);
+
+          document.getElementById("qrcode-container").style.display = "block";
+        } else {
+          alert("Input field can not be empty");
+        }
+      }
+    </script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  </body>
+</html>
